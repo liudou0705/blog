@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191011103013) do
+ActiveRecord::Schema.define(version: 20191028054122) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "name"
@@ -22,11 +22,10 @@ ActiveRecord::Schema.define(version: 20191011103013) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.text     "content",    limit: 65535
-    t.string   "username"
-    t.string   "email"
     t.integer  "issue_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id"
   end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -36,11 +35,19 @@ ActiveRecord::Schema.define(version: 20191011103013) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string   "男"
+    t.string   "女"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "issues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "title"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.text     "content",    limit: 65535
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -51,6 +58,9 @@ ActiveRecord::Schema.define(version: 20191011103013) do
     t.string   "password_digest"
     t.string   "auth_token"
     t.integer  "company_id"
+    t.string   "sex"
+    t.datetime "birthday"
+    t.integer  "category"
   end
 
 end

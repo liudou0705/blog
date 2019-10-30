@@ -15,7 +15,7 @@
       </a>
       <ul class="nav left">
         <li><%= link_to t("navbar.about"), "/about" %></li>
-        <li><a href="#">placeholder</a></li>
+        <li><%= link_to t("用户查询") , users_path %></li>
       </ul>
       <ul class="nav right">
         <% if current_user %>
@@ -47,5 +47,8 @@
     }
     setTimeout(hideNotice, 4000);
  </script>
+ <% if flash.notice %>
+  <div class="notice"><%= flash.notice %></div>
+ <% end %>
 </body>
 </html>

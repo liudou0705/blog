@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :companies
-  get 'users/signup'
+  resources :genders
+      resources :companies
+      get 'users/signup'
 
       get 'issues/show'
 
@@ -16,9 +17,9 @@ Rails.application.routes.draw do
       get    '/about' => 'page#about'
       get    'signup' => 'users#signup', :as => 'signup'
       get    'login' => 'users#login',  :as => 'login'
-      post "create_login_session" => "users#create_login_session"
+      post   "create_login_session" => "users#create_login_session"
       delete "logout" => "users#logout", :as => "logout"
-
+      resources :comments
       #get '/issues/new' => "issues#new"
       #get '/issues/:id' => "issues#show", :as => "issue"
       #delete 'issues/:id' => 'issues#destroy'
@@ -31,7 +32,15 @@ Rails.application.routes.draw do
       #commments
       post '/issues/:issue_id/comments' => 'comments#create'
 
-      resources :users, only: [:create]
+      resources :users do
+        collection do
+
+        end
+
+        member do
+          get :print
+        end
+      end
 
 
 end

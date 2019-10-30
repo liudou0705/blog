@@ -16,6 +16,9 @@ module Blog
       g.helper false
       g.test_framework false
     end
+    config.i18n.default_locale = 'zh-CN'
+    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
   end
 end
 

@@ -18,7 +18,10 @@
         <%= @issue.content %>
       </div>
     </article>
-    <%= render partial: 'shared/comment_list', locals: {comments: @comments} %>
-    <%= render partial: 'shared/comment_box', locals: {issue: @issue} %>
+    <% @comments.each do |comment| %>
+      <%= render partial: 'shared/comment', locals: {comment: comment} %>
+    <% end %>
   </div>
+  <%= render partial: 'shared/comment_box', locals: {issue: @issue} %>
 </div>
+

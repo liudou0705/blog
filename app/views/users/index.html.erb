@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<h2><%= @q.result.count %>人</h2>
 <h1>Users</h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label(:name_cont, "用户名") %>
+  <%= f.text_field :name_cont %>
+  <%= f.label(:sex_eq, "性别") %>
+  <%= f.select :sex_eq, User::SEX.invert, include_blank: '全部' %>
+  <%= f.label(:category_eq, "类型") %>
+  <%= f.select :category_eq, User.categories.map{|k, v|  [category_name(k), v] }, include_blank: '全部'%>
+  <%= submit_tag("查询") %>
+<% end %>
 
 <table>
   <thead>
@@ -26,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<li><%= link_to "New user", signup_path %></li>

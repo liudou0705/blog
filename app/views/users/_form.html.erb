@@ -21,7 +21,29 @@
     <%= f.text_field :email %>
   </div>
 
+  <div class="field">
+    <%= f.label :性别 %>
+    <%= f.radio_button(:sex, "男") %>
+    <%= f.label "男" %>
+    <%= f.radio_button(:sex, "女") %>
+    <%= f.label("女") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.date_field :birthday %>
+  </div>
+
+  <div class="field">
+    <%= f.label :类别 %>
+    <%= f.select :category, options_for_select(User::CATEGORY.invert, @user.category) %>
+  </div>
+
+
+ <%= number_field_tag(:xxxx, in: 1..20, step: 2) %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

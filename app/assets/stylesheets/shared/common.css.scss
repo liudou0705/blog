@@ -91,4 +91,20 @@ form {
   dd {
     margin: 0;
   }
+  .error {
+    margin: 5px 0 9px 0;
+    color: #DB8A14;
+  }
+}
+.notice {
+  position: absolute;
+  z-index: 1000;
+  bottom: 20px;
+  right: 20px;
+  background: teal;
+  color: white;
+  padding: 20px;
+  -webkit-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+  -moz-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+  box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
 }

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= @user.class.columns.map(&:name) %>
 
 <p>
   <strong>Name:</strong>
@@ -9,6 +10,27 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<p>
+  <strong> sex:</strong>
+  <%= @user.sex %>
+</p>
+
+<p>
+  <strong> birthday:</strong>
+  <%= @user.birthday %>
+</p>
+
+<p>
+  <strong> 分类:</strong>
+  <%= category_name(@user.category) %>
+</p>
+
+<p>
+  <strong>created_at:</strong>
+  <%= @user.created_at.to_date %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

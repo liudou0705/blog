@@ -14,12 +14,24 @@ class IssuesController < ApplicationController
     end
   end
 
+  def avatar
+    if not current_user
+      flash[:notice] = "请先登录"
+      redirect_to :root
+      return
+    else
+      @issue = Issue.user.avatar
+    end
+  end
+
   def edit
     @issue = Issue.find(params[:id])
   end
 
   def create
-    Issue.create(issue_params)
+    issue = Issue.new(issue_params)
+    issue.user = current_user
+    issue.save!
     redirect_to :root
   end
 
